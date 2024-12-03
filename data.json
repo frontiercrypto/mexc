@@ -1,0 +1,24 @@
+{
+    "channel": "userFills",
+    "data": {
+        "user": "0xc15ab8dd7daeea5f1aa3b56507cac8a877e21b15",
+        "fills": [
+            {
+                "coin": "SOL",
+                "px": "226.3",
+                "sz": "44.19",
+                "side": "B",
+                "time": 1733251285674,
+                "startPosition": "0.0",
+                "dir": "Open Long",
+                "closedPnl": "0.0",
+                "hash": "0x14b959abd47242b00be30418571b7e01e5008f6e74f550289521c972f6346372",
+                "oid": 52356068091,
+                "crossed": true,
+                "fee": "2.500049",
+                "tid": 1002032397461713,
+                "feeToken": "USDC"
+            }
+        ]
+    }
+}

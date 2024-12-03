@@ -1,0 +1,18 @@
+[
+    {
+        "symbol": "SOL",
+        "direction": "Open Long"
+    },
+    {
+        "symbol": "BNB",
+        "direction": "Open Long"
+    },
+    {
+        "symbol": "kBONK",
+        "direction": "Open Short"
+    },
+    {
+        "symbol": "AAVE",
+        "direction": "Open Short"
+    }
+]

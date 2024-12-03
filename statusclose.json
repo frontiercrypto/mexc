@@ -1,0 +1,18 @@
+[
+    {
+        "symbol": "WWW",
+        "direction": "Close Long"
+    },
+    {
+        "symbol": "WWW",
+        "direction": "Close Short"
+    },
+    {
+        "symbol": "MEW",
+        "direction": "Close Long"
+    },
+    {
+        "symbol": "MOODENG",
+        "direction": "Close Short"
+    }
+]
