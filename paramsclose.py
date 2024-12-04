@@ -31,7 +31,6 @@ else:
     if symbolok:
         try:
             print(f"Ejecutando close.js con el símbolo {symbolok}...")
-            subprocess.run(["node", "close.js", symbolok], timeout=180, check=True)
         except subprocess.TimeoutExpired:
             print("Error: close.js superó el tiempo de espera de 400 segundos.")
         except subprocess.CalledProcessError as e:
