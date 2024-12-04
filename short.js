@@ -160,7 +160,7 @@ async function withTimeout(action, page, timeout = 2000) {
             await withTimeout(() => page.waitForSelector('div.CancelAllConfirmModal_footer__anqap button.ant-btn.ant-btn-primary span:has-text("Confirmar")'), page);
             await withTimeout(() => page.click('div.CancelAllConfirmModal_footer__anqap button.ant-btn.ant-btn-primary span:has-text("Confirmar")'), page);
             
-            await page.waitForTimeout(1000);
+            await page.waitForTimeout(30000);
         
             if (posicionesText && posicionesText === originalContento) {
 
