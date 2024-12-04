@@ -81,7 +81,7 @@ async function withTimeout(action, page, timeout = 2000) {
 
         await withTimeout(() => page.waitForSelector('li.ant-dropdown-menu-item.ant-dropdown-menu-item-only-child[role="menuitem"] span.ant-dropdown-menu-title-content:has-text("ROE")'), page);
         await withTimeout(() => page.click('li.ant-dropdown-menu-item.ant-dropdown-menu-item-only-child[role="menuitem"] span.ant-dropdown-menu-title-content:has-text("ROE")'), page);
-        await withTimeout(() => page.click('div.component_quickWaveBtn__Itd_Y:has-text("100%")'), page);
+        await withTimeout(() => page.click('div.component_quickWaveBtn__Itd_Y:has-text("10%")'), page);
 
         await withTimeout(() => page.waitForSelector('div.contractInfo_tabsContent__InhuP span[data-testid="contract-chart-wrapper-risk-limit"]:has-text("Límite de riesgo")'), page);
         await withTimeout(() => page.click('div.contractInfo_tabsContent__InhuP span[data-testid="contract-chart-wrapper-risk-limit"]:has-text("Límite de riesgo")'), page);
@@ -91,7 +91,7 @@ async function withTimeout(action, page, timeout = 2000) {
 
         await withTimeout(() => page.waitForSelector('li.ant-dropdown-menu-item.ant-dropdown-menu-item-only-child[role="menuitem"] span.ant-dropdown-menu-title-content:has-text("ROE")'), page);
         await withTimeout(() => page.click('li.ant-dropdown-menu-item.ant-dropdown-menu-item-only-child[role="menuitem"] span.ant-dropdown-menu-title-content:has-text("ROE")'), page);
-        await withTimeout(() => page.click('div.component_quickWaveBtn__Itd_Y:has-text("100%")'), page);
+        await withTimeout(() => page.click('div.component_quickWaveBtn__Itd_Y:has-text("10%")'), page);
 
        
         // Ensure "Órdenes abiertas" tab is selected at the start of each loop iteration
@@ -130,7 +130,7 @@ async function withTimeout(action, page, timeout = 2000) {
                 await withTimeout(() => page.waitForSelector('div.component_numberInput__h86N3:has(span:has-text("Cantidad"))'), page);
                 await withTimeout(() => page.fill('div.component_numberInput__h86N3:has(span:has-text("Cantidad")) input', '40'), page);
                 await withTimeout(() => page.click('li.ant-dropdown-menu-item.ant-dropdown-menu-item-only-child[role="menuitem"] span.ant-dropdown-menu-title-content:has-text("ROE")'), page);
-                await withTimeout(() => page.click('div.component_quickWaveBtn__Itd_Y:has-text("100%")'), page);
+                await withTimeout(() => page.click('div.component_quickWaveBtn__Itd_Y:has-text("10%")'), page);
                 await withTimeout(() => page.click('button[data-testid="contract-trade-open-long-btn"]'), page);
 
             } else {
@@ -195,19 +195,11 @@ async function withTimeout(action, page, timeout = 2000) {
                     const hasOrders = match && match[1] !== '0';
 
                     if (hasOrders) {
-                        await page.waitForTimeout(7000);
-
-                        // Locate and click "Cancelar Todo"
-                        await withTimeout(() => page.waitForSelector('div.position_oneClickWrapper__zx4AJ a:has-text("Cancelar Todo")'), page);
-                        await withTimeout(() => page.click('div.position_oneClickWrapper__zx4AJ a:has-text("Cancelar Todo")'), page);
-
-                        await page.waitForTimeout(1000);
-
-                        // Wait for the confirmation modal and click "Confirmar" button
-                        await withTimeout(() => page.waitForSelector('div.CancelAllConfirmModal_footer__anqap button.ant-btn.ant-btn-primary span:has-text("Confirmar")'), page);
-                        await withTimeout(() => page.click('div.CancelAllConfirmModal_footer__anqap button.ant-btn.ant-btn-primary span:has-text("Confirmar")'), page);
                         
+
                         await page.waitForTimeout(1000);
+
+                        
 
                     } else {
                         continue; // Restart the loop if "(0)" is not present
