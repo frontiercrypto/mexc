@@ -22,7 +22,7 @@ async function withTimeout(action, page, timeout = 2000) {
     const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout exceeded')), overallTimeout));
 
     try {
-        const browser = await firefox.launch({ headless: false });
+        const browser = await firefox.launch({ headless: true });
         const context = await browser.newContext();
 
         // Load cookies
