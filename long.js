@@ -22,7 +22,7 @@ async function withTimeout(action, page, timeout = 2000) {
     const timeoutPromise = new Promise((_, reject) => setTimeout(() => reject(new Error('Timeout exceeded')), overallTimeout));
 
     try {
-        const browser = await firefox.launch({ headless: true });
+        const browser = await firefox.launch({ headless: false });
         const context = await browser.newContext();
 
         // Load cookies
@@ -46,13 +46,19 @@ async function withTimeout(action, page, timeout = 2000) {
             await page.keyboard.press('Escape');
         }
 
-        await page.waitForTimeout(1000);
         await withTimeout(() => page.waitForSelector('svg.ant-dropdown-trigger.icon-drop'), page);
         await withTimeout(() => page.click('svg.ant-dropdown-trigger.icon-drop'), page);
+        await page.waitForTimeout(1000);
         await withTimeout(() => page.waitForSelector('.ant-dropdown-menu'), page);
         await withTimeout(() => page.click('li.ant-dropdown-menu-item:has-text("Post Only")'), page);
 
-        await page.waitForTimeout(1000);
+        await withTimeout(() => page.waitForSelector('svg.ant-dropdown-trigger.icon-drop'), page);
+        await withTimeout(() => page.click('svg.ant-dropdown-trigger.icon-drop'), page);
+        
+        await withTimeout(() => page.waitForSelector('.ant-dropdown-menu'), page);
+        await withTimeout(() => page.click('li.ant-dropdown-menu-item:has-text("Post Only")'), page);
+        
+        
 
         await withTimeout(() => page.waitForSelector('span.EntrustTabs_dropdownTab__vGFpN button.ant-btn.ant-btn-default'), page);
         await withTimeout(() => page.click('span.EntrustTabs_dropdownTab__vGFpN button.ant-btn.ant-btn-default'), page);
@@ -60,33 +66,12 @@ async function withTimeout(action, page, timeout = 2000) {
         await withTimeout(() => page.waitForSelector('span.EntrustTabs_dropdownTab__vGFpN button.ant-btn.ant-btn-default'), page);
         await withTimeout(() => page.click('span.EntrustTabs_dropdownTab__vGFpN button.ant-btn.ant-btn-default'), page);
 
-        await page.waitForTimeout(1000);
-        
-        await withTimeout(() => page.waitForSelector('svg.ant-dropdown-trigger.icon-drop'), page);
-        await withTimeout(() => page.click('svg.ant-dropdown-trigger.icon-drop'), page);
-        await withTimeout(() => page.waitForSelector('.ant-dropdown-menu'), page);
-        await withTimeout(() => page.click('li.ant-dropdown-menu-item:has-text("Post Only")'), page);
-
-        await page.waitForTimeout(1000);
-        
-        await withTimeout(() => page.waitForSelector('svg.ant-dropdown-trigger.icon-drop'), page);
-        await withTimeout(() => page.click('svg.ant-dropdown-trigger.icon-drop'), page);
-        await withTimeout(() => page.waitForSelector('.ant-dropdown-menu'), page);
-        await withTimeout(() => page.click('li.ant-dropdown-menu-item:has-text("Post Only")'), page);
-
-        await page.waitForTimeout(1000);
-
-        await withTimeout(() => page.waitForSelector('svg.ant-dropdown-trigger.icon-drop'), page);
-        await withTimeout(() => page.click('svg.ant-dropdown-trigger.icon-drop'), page);
-        await withTimeout(() => page.waitForSelector('.ant-dropdown-menu'), page);
-        await withTimeout(() => page.click('li.ant-dropdown-menu-item:has-text("Post Only")'), page);
-
-        await page.waitForTimeout(1000);
-
-
+       
         // Take Profit
         await withTimeout(() => page.waitForSelector('div.InputNumberExtend_wrapper__qxkpD.extend-wrapper span.component_refreshText__hpDCL'), page);
         await withTimeout(() => page.click('div.InputNumberExtend_wrapper__qxkpD.extend-wrapper span.component_refreshText__hpDCL'), page);
+
+        await page.waitForTimeout(1000);
 
         await withTimeout(() => page.waitForSelector('label.ant-checkbox-wrapper:has-text("Long TP/SL") input.ant-checkbox-input'), page);
         await withTimeout(() => page.click('label.ant-checkbox-wrapper:has-text("Long TP/SL") input.ant-checkbox-input'), page);
@@ -108,44 +93,15 @@ async function withTimeout(action, page, timeout = 2000) {
         await withTimeout(() => page.click('li.ant-dropdown-menu-item.ant-dropdown-menu-item-only-child[role="menuitem"] span.ant-dropdown-menu-title-content:has-text("ROE")'), page);
         await withTimeout(() => page.click('div.component_quickWaveBtn__Itd_Y:has-text("100%")'), page);
 
-        await page.waitForTimeout(1000);
-
-        await withTimeout(() => page.waitForSelector('svg.ant-dropdown-trigger.icon-drop'), page);
-        await withTimeout(() => page.click('svg.ant-dropdown-trigger.icon-drop'), page);
-        await withTimeout(() => page.waitForSelector('.ant-dropdown-menu'), page);
-        await withTimeout(() => page.click('li.ant-dropdown-menu-item:has-text("Post Only")'), page);
-
-        await page.waitForTimeout(1000);
-    
-        // Take Profit
-        await withTimeout(() => page.waitForSelector('div.InputNumberExtend_wrapper__qxkpD.extend-wrapper span.component_refreshText__hpDCL'), page);
-        await withTimeout(() => page.click('div.InputNumberExtend_wrapper__qxkpD.extend-wrapper span.component_refreshText__hpDCL'), page);
-
-        await withTimeout(() => page.waitForSelector('div.component_titleWrapperNormal__l_Vch:has(p:has-text("Take Profit")) div.ant-dropdown-trigger.component_flexEnd__8jJQ0.component_stopOrderCalcTypeStr__G_7EX.component_stopCalcTypeSelectNormal__g1fD6'), page);
-        await withTimeout(() => page.click('div.component_titleWrapperNormal__l_Vch:has(p:has-text("Take Profit")) div.ant-dropdown-trigger.component_flexEnd__8jJQ0.component_stopOrderCalcTypeStr__G_7EX.component_stopCalcTypeSelectNormal__g1fD6'), page);
-
-        await withTimeout(() => page.waitForSelector('li.ant-dropdown-menu-item.ant-dropdown-menu-item-only-child[role="menuitem"] span.ant-dropdown-menu-title-content:has-text("ROE")'), page);
-        await withTimeout(() => page.click('li.ant-dropdown-menu-item.ant-dropdown-menu-item-only-child[role="menuitem"] span.ant-dropdown-menu-title-content:has-text("ROE")'), page);
-        await withTimeout(() => page.click('div.component_quickWaveBtn__Itd_Y:has-text("100%")'), page);
-
-        await withTimeout(() => page.waitForSelector('div.contractInfo_tabsContent__InhuP span[data-testid="contract-chart-wrapper-risk-limit"]:has-text("Límite de riesgo")'), page);
-        await withTimeout(() => page.click('div.contractInfo_tabsContent__InhuP span[data-testid="contract-chart-wrapper-risk-limit"]:has-text("Límite de riesgo")'), page);
-
-        await withTimeout(() => page.waitForSelector('div.component_titleWrapperNormal__l_Vch:has(p:has-text("Take Profit")) div.ant-dropdown-trigger.component_flexEnd__8jJQ0.component_stopOrderCalcTypeStr__G_7EX.component_stopCalcTypeSelectNormal__g1fD6'), page);
-        await withTimeout(() => page.click('div.component_titleWrapperNormal__l_Vch:has(p:has-text("Take Profit")) div.ant-dropdown-trigger.component_flexEnd__8jJQ0.component_stopOrderCalcTypeStr__G_7EX.component_stopCalcTypeSelectNormal__g1fD6'), page);
-
-        await withTimeout(() => page.waitForSelector('li.ant-dropdown-menu-item.ant-dropdown-menu-item-only-child[role="menuitem"] span.ant-dropdown-menu-title-content:has-text("ROE")'), page);
-        await withTimeout(() => page.click('li.ant-dropdown-menu-item.ant-dropdown-menu-item-only-child[role="menuitem"] span.ant-dropdown-menu-title-content:has-text("ROE")'), page);
-        await withTimeout(() => page.click('div.component_quickWaveBtn__Itd_Y:has-text("100%")'), page);
+       
         // Ensure "Órdenes abiertas" tab is selected at the start of each loop iteration
-
+        
         await withTimeout(() => page.waitForSelector('div.HideOtherPairs_showAll__eru_b.hide-other-pairs:has(span:has-text("Ocultar otros pares")) span.ant-checkbox'), page);
         await withTimeout(() => page.click('div.HideOtherPairs_showAll__eru_b.hide-other-pairs:has(span:has-text("Ocultar otros pares")) span.ant-checkbox'), page);
         await page.waitForTimeout(1000);
         await withTimeout(() => page.waitForSelector('div.ant-tabs-nav-list'), page);
         await withTimeout(() => page.click('div.ant-tabs-nav-list div.ant-tabs-tab span:has-text("Órdenes abiertas")'), page);
 
-        await page.waitForTimeout(1000);
 
         const originalContent = await page.evaluate(() => {
             const tablist = document.querySelector('div[role="tablist"].ant-tabs-nav');
@@ -163,16 +119,66 @@ async function withTimeout(action, page, timeout = 2000) {
 
                 await withTimeout(() => page.waitForSelector('svg.ant-dropdown-trigger.icon-drop'), page);
                 await withTimeout(() => page.click('svg.ant-dropdown-trigger.icon-drop'), page);
+                
                 await withTimeout(() => page.waitForSelector('.ant-dropdown-menu'), page);
                 await withTimeout(() => page.click('li.ant-dropdown-menu-item:has-text("Post Only")'), page);
 
-                await page.waitForTimeout(1000);                
+                        
                 // Further actions for "Posiciones(0)" case
                 await withTimeout(() => page.waitForSelector('div.InputNumberExtend_wrapper__qxkpD.extend-wrapper span.component_refreshText__hpDCL'), page);
                 await withTimeout(() => page.click('div.InputNumberExtend_wrapper__qxkpD.extend-wrapper span.component_refreshText__hpDCL'), page);
                 await withTimeout(() => page.waitForSelector('div.component_numberInput__h86N3:has(span:has-text("Cantidad"))'), page);
                 await withTimeout(() => page.fill('div.component_numberInput__h86N3:has(span:has-text("Cantidad")) input', '40'), page);
+                await withTimeout(() => page.click('li.ant-dropdown-menu-item.ant-dropdown-menu-item-only-child[role="menuitem"] span.ant-dropdown-menu-title-content:has-text("ROE")'), page);
+                await withTimeout(() => page.click('div.component_quickWaveBtn__Itd_Y:has-text("100%")'), page);
                 await withTimeout(() => page.click('button[data-testid="contract-trade-open-long-btn"]'), page);
+
+            } else {
+                break;
+            }
+        }
+        
+        const originalContento = await page.evaluate(() => {
+            const tablist = document.querySelector('div[role="tablist"].ant-tabs-nav');
+            return tablist ? tablist.innerText : null;
+        });
+
+        // Main loop to check for 'Posiciones(0)' and interact accordingly
+        while (true) {
+            const posicionesText = await page.evaluate(() => {
+                const tablist = document.querySelector('div[role="tablist"].ant-tabs-nav');
+                return tablist ? tablist.innerText : null;
+            });
+
+            // Locate and click "Cancelar Todo"
+            await withTimeout(() => page.waitForSelector('div.position_oneClickWrapper__zx4AJ a:has-text("Cancelar Todo")'), page);
+            await withTimeout(() => page.click('div.position_oneClickWrapper__zx4AJ a:has-text("Cancelar Todo")'), page);
+
+            await page.waitForTimeout(1000);
+
+            // Wait for the confirmation modal and click "Confirmar" button
+            await withTimeout(() => page.waitForSelector('div.CancelAllConfirmModal_footer__anqap button.ant-btn.ant-btn-primary span:has-text("Confirmar")'), page);
+            await withTimeout(() => page.click('div.CancelAllConfirmModal_footer__anqap button.ant-btn.ant-btn-primary span:has-text("Confirmar")'), page);
+            
+            await page.waitForTimeout(1000);
+        
+            if (posicionesText && posicionesText === originalContento) {
+
+                await withTimeout(() => page.waitForSelector('[data-testid="contract-trade-order-form-tab-close"]'), page);
+                await withTimeout(() => page.click('[data-testid="contract-trade-order-form-tab-close"]'), page);
+
+                await withTimeout(() => page.waitForSelector('svg.ant-dropdown-trigger.icon-drop'), page);
+                await withTimeout(() => page.click('svg.ant-dropdown-trigger.icon-drop'), page);
+                await withTimeout(() => page.waitForSelector('.ant-dropdown-menu'), page);
+                await withTimeout(() => page.click('li.ant-dropdown-menu-item:has-text("Post Only")'), page);
+                
+                // Further actions for "Posiciones(0)" case
+                await withTimeout(() => page.click('[data-testid="contract-trade-order-form-tab-open"]'), page);        
+                await withTimeout(() => page.click('div.ant-slider-step > span[style="left: 100%; transform: translateX(-50%);"]'), page);
+                await withTimeout(() => page.click('div.InputNumberExtend_wrapper__qxkpD.extend-wrapper span.component_refreshText__hpDCL'), page);
+                await withTimeout(() => page.click('[data-testid="contract-trade-order-form-tab-close"]'), page);
+                await withTimeout(() => page.click('button[data-testid="contract-trade-close-short-btn"]'), page);
+                await withTimeout(() => page.click('button[data-testid="contract-trade-close-long-btn"]'), page);
 
                 await page.waitForTimeout(1000);
 
@@ -204,7 +210,7 @@ async function withTimeout(action, page, timeout = 2000) {
                         await page.waitForTimeout(1000);
 
                     } else {
-                        continue; // Restart the loop if "(0)" is present
+                        continue; // Restart the loop if "(0)" is not present
                     }
                 } else {
                     break;
