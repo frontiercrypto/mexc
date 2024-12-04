@@ -35,7 +35,7 @@ def check_for_file_update(file_path, last_modified_time):
 
 async def subscribe_and_listen():
     uri = "wss://api.hyperliquid.xyz/ws"
-    user_address = "0xc15ab8dd7daeea5f1aa3b56507cac8a877e21b15"
+    user_address = "0x399965e15d4e61ec3529cc98b7f7ebb93b733336"
     data_file = "data.json"
     last_modified_time = 0  # Initial timestamp
 
